@@ -28,3 +28,14 @@ class TestCreateUser:
         assert response.status_code == FOUR_HUNDRED_THREE
         assert response.json()[SUCCESS_KEY] is False
         assert response.json()["message"] == REGISTER_USER_EXISTS_ERROR
+
+    @allure.title("создать пользователя и не заполнить одно из обязательных полей")
+    @pytest.mark.parametrize("body", MISSING_FIELDS_DATA)
+    def test_create_user_missing_field(self, body):
+        response = requests.post(
+            f"{BASE_URL}/auth/register",
+            json=body
+        )
+        assert response.status_code == FOUR_HUNDRED_THREE
+        assert response.json()[SUCCESS_KEY] is False
+        assert response.json()["message"] == MISSING_FIELDS_ERROR

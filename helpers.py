@@ -1,11 +1,8 @@
 import random
 import string
 import allure
+from data import BASE_URL, DEFAULT_EMAIL, DEFAULT_PASSWORD
 
-
-BASE_URL = "https://stellarburgers.education-services.ru/api"
-DEFAULT_EMAIL = "test@example.com" 
-DEFAULT_PASSWORD = "testpassword123"
 
 @allure.title("Генерируем случайную строку")
 def random_string(length=10):

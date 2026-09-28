@@ -18,3 +18,12 @@ TEST_PASSWORD = "password123"
 TEST_EMAIL = "jane@mail.ru"
 
 INVALID_INGREDIENT_HASH = "невалидный_хеш"
+
+
+BASE_URL = "https://stellarburgers.education-services.ru/api"
+DEFAULT_EMAIL = "test@example.com" 
+DEFAULT_PASSWORD = "testpassword123"
+
+AUTH_REGISTER = f"{BASE_URL}/auth/register"
+AUTH_LOGIN = f"{BASE_URL}/auth/login"
+ORDERS_CREATE = f"{BASE_URL}/orders"

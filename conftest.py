@@ -4,10 +4,7 @@ import pytest
 import requests
 import allure
 from helpers import random_email, random_string
-
-BASE_URL = "https://stellarburgers.education-services.ru/api"
-DEFAULT_EMAIL = "test@example.com" 
-DEFAULT_PASSWORD = "testpassword123"
+from data import BASE_URL, DEFAULT_EMAIL, DEFAULT_PASSWORD
 
 
 @pytest.fixture(scope="function")

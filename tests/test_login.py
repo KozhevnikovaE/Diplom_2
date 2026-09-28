@@ -1,7 +1,6 @@
 import pytest
 import requests
-from conftest import BASE_URL
-from data import INVALID_LOGIN_DATA
+from data import INVALID_LOGIN_DATA, AUTH_LOGIN
 import allure
 from constants import (
     TWO_HUNDRED,
@@ -16,7 +15,7 @@ class TestLogin:
     @allure.title("вход под существующим пользователем")
     def test_login_existing_user(self, new_user):
         response = requests.post(
-            f"{BASE_URL}/auth/login",
+            AUTH_LOGIN,
             json={"email": new_user["email"], "password": new_user["password"]}
         )
         assert response.status_code == TWO_HUNDRED
@@ -29,7 +28,7 @@ class TestLogin:
     @pytest.mark.parametrize("credentials", INVALID_LOGIN_DATA)
     def test_login_invalid_credentials(self, credentials):
         response = requests.post(
-            f"{BASE_URL}/auth/login",
+            AUTH_LOGIN,
             json=credentials
         )
         assert response.status_code == FOUR_HUNDRED_ONE

@@ -1,7 +1,6 @@
 import pytest
 import requests
-from conftest import BASE_URL
-from data import MISSING_FIELDS_DATA
+from data import MISSING_FIELDS_DATA, AUTH_REGISTER
 import allure
 from constants import (
     REGISTER_USER_EXISTS_ERROR,
@@ -22,7 +21,7 @@ class TestCreateUser:
     @allure.title("создать пользователя, который уже зарегистрирован")
     def test_create_existing_user(self, existing_user):
         response = requests.post(
-            f"{BASE_URL}/auth/register",
+            AUTH_REGISTER,
             json=existing_user
         )
         assert response.status_code == FOUR_HUNDRED_THREE
@@ -33,7 +32,7 @@ class TestCreateUser:
     @pytest.mark.parametrize("body", MISSING_FIELDS_DATA)
     def test_create_user_missing_field(self, body):
         response = requests.post(
-            f"{BASE_URL}/auth/register",
+            AUTH_REGISTER,
             json=body
         )
         assert response.status_code == FOUR_HUNDRED_THREE
